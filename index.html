@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Code Editor</title>
+    <link rel="stylesheet" href="stylesheet.css">
+    <script src="https://kit.fontawesome.com/24073d8350.js" crossorigin="anonymous"></script>
+</head>
+<body>
+   <div class="container">
+      <div class="left">
+                <label > <i class="fa-brands fa-html5"></i> HTML</label>
+                <!-- onkeyup="run()" it was used when we are enter sumthing in thr textarea
+                automatical the run() will exicutes  -->
+                <textarea id="html-code" onkeyup="run()"></textarea> 
+                    
+                <label ><i class="fa-brands fa-css3-alt"></i> CSS</label>
+                <textarea id="css-code" onkeyup="run()"></textarea>
+                    
+                <label ><i class="fa-brands fa-js"></i> JavaScript</label>
+                <textarea id="js-code" onkeyup="run()"></textarea>
+       </div>
+        <div class="right">
+            <label > <i class="fa-solid fa-play"></i> Output</label>
+          <iframe id="output"></iframe> <!--It creates an html document/webpage in the current document -->
+        </div> 
+   </div>
+
+
+   <script>
+     function run(){
+        let htmlcode=document.querySelector("#html-code").value;
+        let csscode=document.querySelector("#css-code").value;
+        let jscode=document.querySelector("#js-code").value;
+        let output=document.querySelector("#output")
+
+      //   contentDocument was used to access object of an iframe
+        output.contentDocument.body.innerHTML= htmlcode+"<style>"+csscode+"</style>";  
+        output.contentWindow.eval(jscode);
+     }
+
+
+
+   </script>
+</body>
+</html>
